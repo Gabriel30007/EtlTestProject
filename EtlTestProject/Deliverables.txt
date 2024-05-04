@@ -1,0 +1,23 @@
+﻿Sql queries
+----
+CREATE TABLE SampleData
+(	
+	tpep_pickup_datetime datetime,
+	tpep_dropoff_datetime datetime,
+	passenger_count INT,
+    trip_distance decimal,
+    store_and_fwd_flag nvarchar(3),
+    PULocationID INT,
+    DOLocationID INT,
+    fare_amount DECIMAL,
+    tip_amount DECIMAL
+)
+
+CREATE NONCLUSTERED INDEX IX_PULocationId_Includes  
+ON SampleData (PULocationID)  
+INCLUDE (tip_amount, tpep_pickup_datetime, tpep_dropoff_datetime, trip_distance);  
+	
+
+----
+
+ Number of rows in your table after running the program -- 29889
